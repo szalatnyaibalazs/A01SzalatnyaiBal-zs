@@ -31,11 +31,29 @@ namespace A01SzalatnyaiBalázs
             }
             return max;
         }
+        static int Egyediek()
+        {
+            StreamWriter iro = new StreamWriter("egyediek.txt");
+            int db = 0;
+            for (int i = 0; i < adat.Length; i++)
+            {
+                if (adat[i] % 5==0 && adat[i] % 7==0)
+                {
+                    iro.WriteLine(adat[i]);
+                    db++;
+                }
+            }
+            iro.Close();
+
+            return db;
+        }
         static void Main(string[] args)
         {
             Beolvasas();
 
             Console.WriteLine("A maximum:{0}",Maximumertek());
+
+            Console.WriteLine("5 és 7 oszthatóak száma: {0}",Egyediek());
 
             Console.ReadKey();
         }
